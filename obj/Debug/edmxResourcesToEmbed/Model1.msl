@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="eTicketsModelStoreContainer" CdmEntityContainer="eTicketsEntities">
+    <EntitySetMapping Name="Attendees">
+      <EntityTypeMapping TypeName="eTicketsModel.Attendee">
+        <MappingFragment StoreEntitySet="Attendee">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="eventID" ColumnName="eventID" />
+          <ScalarProperty Name="purchaseDate" ColumnName="purchaseDate" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="sessionID" ColumnName="sessionID" />
+          <ScalarProperty Name="transactionID" ColumnName="transactionID" />
+          <ScalarProperty Name="totalTickets" ColumnName="totalTickets" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="paymentStatus" ColumnName="paymentStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrentEvents">
+      <EntityTypeMapping TypeName="eTicketsModel.CurrentEvent">
+        <MappingFragment StoreEntitySet="CurrentEvent">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="summary" ColumnName="summary" />
+          <ScalarProperty Name="schedule" ColumnName="schedule" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CurrentEvent_Attendee" TypeName="eTicketsModel.CurrentEvent_Attendee" StoreEntitySet="CurrentEvent_Attendee">
+      <EndProperty Name="Attendee">
+        <ScalarProperty Name="ID" ColumnName="attendeeID" />
+      </EndProperty>
+      <EndProperty Name="CurrentEvent">
+        <ScalarProperty Name="ID" ColumnName="currentEventID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

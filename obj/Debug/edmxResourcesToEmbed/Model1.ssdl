@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eTicketsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Attendee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="eventID" Type="int" />
+    <Property Name="purchaseDate" Type="datetime" />
+    <Property Name="firstname" Type="varchar" MaxLength="32" />
+    <Property Name="lastname" Type="varchar" MaxLength="32" />
+    <Property Name="email" Type="varchar" MaxLength="128" />
+    <Property Name="sessionID" Type="varchar" MaxLength="128" />
+    <Property Name="transactionID" Type="varchar" MaxLength="128" />
+    <Property Name="totalTickets" Type="int" />
+    <Property Name="amount" Type="money" />
+    <Property Name="paymentStatus" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="CurrentEvent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="summary" Type="varchar" MaxLength="256" />
+    <Property Name="schedule" Type="datetime" />
+    <Property Name="cost" Type="money" />
+  </EntityType>
+  <EntityType Name="CurrentEvent_Attendee">
+    <Key>
+      <PropertyRef Name="currentEventID" />
+      <PropertyRef Name="attendeeID" />
+    </Key>
+    <Property Name="currentEventID" Type="int" Nullable="false" />
+    <Property Name="attendeeID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__CurrentEv__atten__15502E78">
+    <End Role="Attendee" Type="Self.Attendee" Multiplicity="1" />
+    <End Role="CurrentEvent_Attendee" Type="Self.CurrentEvent_Attendee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Attendee">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CurrentEvent_Attendee">
+        <PropertyRef Name="attendeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CurrentEv__curre__145C0A3F">
+    <End Role="CurrentEvent" Type="Self.CurrentEvent" Multiplicity="1" />
+    <End Role="CurrentEvent_Attendee" Type="Self.CurrentEvent_Attendee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CurrentEvent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CurrentEvent_Attendee">
+        <PropertyRef Name="currentEventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="eTicketsModelStoreContainer">
+    <EntitySet Name="Attendee" EntityType="Self.Attendee" Schema="etickets" store:Type="Tables" />
+    <EntitySet Name="CurrentEvent" EntityType="Self.CurrentEvent" Schema="etickets" store:Type="Tables" />
+    <EntitySet Name="CurrentEvent_Attendee" EntityType="Self.CurrentEvent_Attendee" Schema="etickets" store:Type="Tables" />
+    <AssociationSet Name="FK__CurrentEv__atten__15502E78" Association="Self.FK__CurrentEv__atten__15502E78">
+      <End Role="Attendee" EntitySet="Attendee" />
+      <End Role="CurrentEvent_Attendee" EntitySet="CurrentEvent_Attendee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CurrentEv__curre__145C0A3F" Association="Self.FK__CurrentEv__curre__145C0A3F">
+      <End Role="CurrentEvent" EntitySet="CurrentEvent" />
+      <End Role="CurrentEvent_Attendee" EntitySet="CurrentEvent_Attendee" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

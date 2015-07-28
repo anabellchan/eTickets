@@ -1,0 +1,14 @@
+/*
+Title:      Davroc Interiors javascript only styles
+Author:     Mark Croxton, mcroxton@hallmark-design.co.uk
+Copyright:	Hallmark Design
+Updated:    April 02 2008
+*/
+
+#contact-mask {
+ 	height: 0;
+}
+
+#tab-1, #tab-2 {
+	display:inline;
+}

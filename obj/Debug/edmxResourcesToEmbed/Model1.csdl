@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eTicketsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Attendee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="eventID" Type="Int32" />
+    <Property Name="purchaseDate" Type="DateTime" Precision="3" />
+    <Property Name="firstname" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="lastname" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="sessionID" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="transactionID" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="totalTickets" Type="Int32" />
+    <Property Name="amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="paymentStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CurrentEvents" Relationship="Self.CurrentEvent_Attendee" FromRole="Attendee" ToRole="CurrentEvent" />
+  </EntityType>
+  <EntityType Name="CurrentEvent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="summary" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="schedule" Type="DateTime" Precision="3" />
+    <Property Name="cost" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Attendees" Relationship="Self.CurrentEvent_Attendee" FromRole="CurrentEvent" ToRole="Attendee" />
+  </EntityType>
+  <Association Name="CurrentEvent_Attendee">
+    <End Role="Attendee" Type="Self.Attendee" Multiplicity="*" />
+    <End Role="CurrentEvent" Type="Self.CurrentEvent" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="eTicketsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Attendees" EntityType="Self.Attendee" />
+    <EntitySet Name="CurrentEvents" EntityType="Self.CurrentEvent" />
+    <AssociationSet Name="CurrentEvent_Attendee" Association="Self.CurrentEvent_Attendee">
+      <End Role="Attendee" EntitySet="Attendees" />
+      <End Role="CurrentEvent" EntitySet="CurrentEvents" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

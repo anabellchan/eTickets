@@ -1,0 +1,44 @@
+﻿@model PagedList.IPagedList<eTickets.Attendee>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Attendees";
+}
+
+<h2>Attendees</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="table-responsive">
+
+
+    <table class="table table-condensed table-hover table-striped">
+        <tr>
+            <th class="text-center hidden-xs">Event ID</th>
+            <th class="text-center hidden-xs">Date</th>
+            <th class="text-center">Firstname</th>
+            <th class="text-center">Lastname</th>
+            <th class="text-center hidden-xs">Session ID</th>
+            <th class="text-center hidden-xs">Transaction ID</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-center hidden-xs">Amount</th>
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td class="hidden-xs">@Html.DisplayFor(modelItem => item.eventID)</td>
+                <td class="hidden-xs">@Html.DisplayFor(modelItem => item.purchaseDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.firstname)</td>
+                <td>@Html.DisplayFor(modelItem => item.lastname)</td>
+                <td class="hidden-xs">@Html.DisplayFor(modelItem => item.sessionID)</td>
+                <td class="hidden-xs">@Html.DisplayFor(modelItem => item.transactionID)</td>
+                <td class="text-right">@Html.DisplayFor(modelItem => item.totalTickets)</td>
+                <td class="text-right hidden-xs">@string.Format("{0:C}", item.amount)</td>
+            </tr>
+        }
+    </table>
+</div>
+<div class="row text-left">
+    @Html.PagedListPager(Model, page => Url.Action("Attendees", new { page }))
+</div>

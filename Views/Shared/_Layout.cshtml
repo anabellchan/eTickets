@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eTickets</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/Content/base.css?v=3" type="text/css" media="screen" />
+    <link rel="stylesheet" href="~/Content/style.css" type="text/css" media="screen" />
+
+    <script type="text/javascript">try { Typekit.load(); } catch (e) { }</script>
+
+    <script>
+        window.onload = function()
+        {
+            $('#events > li').click(function () {
+                if ($(this).hasClass("col-swan")) {
+                    $('#summary').text("Swan Lake");
+                    $('#time').text("February 07, 2015 7pm");
+
+                }
+                else if ($(this).hasClass("col-vso")) {
+                    $('#summary').text("Vancouver Symphony Orchestra");
+                    $('#time').text("February 14, 2015 7pm");
+                }
+                else if ($(this).hasClass("col-drone")) {
+                    $('#summary').text("Battle of the Drones");
+                    $('#time').text("February 21, 2015 7pm");
+                }
+            });
+        }
+      
+    </script>
+</head>
+<body id="home">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("eTickets", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="home"><a href="~/Home/Index">home</a></li>
+                    <li class="about"><a href="~/Home/Attendees">attendees</a></li>
+                    <li class="careers"><a href="#">careers</a></li>
+                    <li class="contact"><a href="#">contact</a></li>
+                    <li class="brochure"><a href="#" id="contact-toggle">brochure requests</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- content -->
+    <div class="container body-content" style="padding:0; margin:0 !important;">
+        @RenderBody()
+
+        <footer id="footer">
+            <p>&copy; @DateTime.Now.Year - Anabell C-C</p>
+        </footer>
+    </div>
+
+    <!-- load these scripts asynchronously -->
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

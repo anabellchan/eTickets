@@ -1,0 +1,102 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- nav -->
+<div id="nav">
+    <ul><li id="event-name" style="font-size: x-large;padding-top: 30px;color:#fff;">Event Name</li></ul>
+</div>
+    <!-- masthead -->
+<div id="masthead">
+    <h1><a href="/" title="eTickets homepage [Alt+1]">eTickets</a></h1>
+    <div>       
+        <h2 id="summary">Celebrate</h2>
+        <p id="time">Click on the events to learn more.</p>
+    </div>
+</div>
+<!-- content -->
+<div class="row">
+    <div class="col-lg-3">
+        <img class="col-swan" src="~/Content/img/swanlake-g.png" />
+        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="Z7HY3H55JNXJ2">
+            <input type="hidden" name="custom" value=@ViewBag.sessionID />
+            <input type="image" src="http://etickets.anabellchan.com/Content/img/pay-now-25.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+    </div>
+    <!-- Vancouver Symphony Orchestra -->
+    <div class="col-lg-3">
+        <img class="col-vso" src="~/Content/img/vso-g.png" />
+        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="DT4PYL7U7WR74">
+            <input type="hidden" name="custom" value=@ViewBag.sessionID />
+            <input type="image" src="http://etickets.anabellchan.com/Content/img/pay-now-25.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+    </div>
+    <!-- Battle of the Drones -->
+    <div class="col-lg-3">
+        <img class="col-drone" src="~/Content/img/battleofthedrones-g.png" />
+        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="336W4PRFY2WYG">
+            <input type="hidden" name="custom" value=@ViewBag.sessionID />
+            <input type="image" src="http://etickets.anabellchan.com/Content/img/pay-now-25.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+    </div>
+    <div class="col-lg-3">
+        <img src="~/Content/img/buyer.png" />
+
+    </div>
+</div>
+
+
+@*<div id="content">
+    <div id="entrance">
+        <ul id="events" style="width:2331px;">
+            <!-- Swan Lake -->
+            <li class="col-swan" id="col-swan">
+                <img src="~/Content/img/swanlake-g.png" />
+                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="Z7HY3H55JNXJ2">
+                    <input type="hidden" name="custom" value=@ViewBag.sessionID />
+                    <input type="image" src="http://etickets.anabellchan.com/Content/img/pay-now-25.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                </form>
+
+            </li>
+            <!-- Vancouver Symphony Orchestra -->
+            <li class="col-vso" id="col-vso">
+                <img src="~/Content/img/vso-g.png" />
+                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="DT4PYL7U7WR74">
+                    <input type="hidden" name="custom" value=@ViewBag.sessionID />
+                    <input type="image" src="http://etickets.anabellchan.com/Content/img/pay-now-25.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                </form>
+            </li>
+            <!-- Battle of the Drones -->
+            <li class="col-drone" id="col-drone">
+                <img src="~/Content/img/battleofthedrones-g.png" />
+                <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="336W4PRFY2WYG">
+                    <input type="hidden" name="custom" value=@ViewBag.sessionID />
+                    <input type="image" src="http://etickets.anabellchan.com/Content/img/pay-now-25.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                </form>
+            </li>
+            <li>
+                <img src="~/Content/img/buyer.png" />
+            </li>
+
+        </ul>
+    </div>
+</div>*@
+
